@@ -1,0 +1,2 @@
+class RecordNotFoundError < RuntimeError
+end
