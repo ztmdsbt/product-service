@@ -23,6 +23,7 @@ $LOAD_PATH.unshift File.expand_path('../config', File.dirname(__FILE__))
 require 'version'
 require 'boot'
 require 'models/product'
+require 'validators/product_creation_validator'
 require 'database'
 require 'repositories/record_not_found_error'
 require 'repositories/record_invalid_error'

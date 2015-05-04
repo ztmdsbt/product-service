@@ -4,12 +4,16 @@ class ProductRepository
   end
 
   def self.find(_id)
-    product = Database.db.relation(:products).first
+    product = Database.db.relation(:products).as(:products).first
     raise RecordNotFoundError, 'Product not found' unless product
     product
   end
 
   def self.save(attrs)
-    Database.db.command(:products).create.call(attrs.except(:id))[:id]
+    command.create.call(attrs.except(:id))[:id]
+  end
+
+  def self.command
+    Database.db.command(:products)
   end
 end

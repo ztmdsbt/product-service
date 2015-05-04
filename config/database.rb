@@ -26,6 +26,10 @@ class Database
       def find(id)
         where(id: id)
       end
+
+      def find_by_category_and_name(category, name)
+        where(category: category, name: name)
+      end
     end
   end
 
@@ -37,7 +41,10 @@ class Database
 
   def self.setup_commands(rom)
     rom.commands(:products) do
-      define(:create) { result :one }
+      define(:create) do
+        result :one
+        validator ProductCreationValidator
+      end
     end
   end
 

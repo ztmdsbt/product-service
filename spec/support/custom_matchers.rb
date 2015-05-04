@@ -6,9 +6,9 @@ module CustomMatchers
       expect(actual[:id]).to eq expected.id
       expect(actual[:category]).to eq expected.category
       expect(actual[:name]).to eq expected.name
-      expect(actual[:created_at]).to eq expected.created_at
-      expect(actual[:updated_at]).to eq expected.updated_at
-      expect(actual[:expired_at]).to eq expected.expired_at
+      expect(actual[:createdAt]).to eq expected.created_at.to_s
+      expect(actual[:updatedAt]).to eq expected.updated_at.to_s
+      expect(actual[:expiredAt]).to eq expected.expired_at.to_s
 
       links = actual[:_links]
       expect(links[:self]).to eq(href: "http://example.org/products/#{expected.id}")

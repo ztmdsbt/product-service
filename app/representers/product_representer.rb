@@ -6,8 +6,8 @@ module ProductRepresenter
   property :id
   property :category
   property :name
-  property :created_at, as: :createAt
-  property :updated_at, as: :updateAt
+  property :created_at, as: :createdAt
+  property :updated_at, as: :updatedAt
   property :expired_at, as: :expiredAt
 
   link :self do |opts|
