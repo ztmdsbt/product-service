@@ -1,0 +1,6 @@
+.ruby-version
+.rspec
+.bundler-version.git%
+documentation
+log/*.log
+target

@@ -1,4 +1,4 @@
-module CustomerStore
+module ProductStore
   class API < Grape::API
     content_type :json, 'application/hal+json'
     format :json
@@ -34,7 +34,7 @@ module CustomerStore
       end
       post do
         present ProductRepository.find(ProductRepository.save(convert_param_keys(params[:product]))),
-          with: ProductRepresenter
+                with: ProductRepresenter
       end
     end
 

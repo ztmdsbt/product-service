@@ -14,7 +14,6 @@ gem 'rack-hal_browser'
 gem 'hal-index'
 
 group :test do
-  gem 'pact'
   gem 'rack-test'
 end
 

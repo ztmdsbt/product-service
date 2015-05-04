@@ -38,9 +38,9 @@ Specify whether this repo has financial implications and is part of SOX requirem
 ### Set up your .env file
 ```
 cat << EOF > .env
-CUSTOMER_DB_URL=<REPLACE>
-CUSTOMER_DB_USERNAME=<REPLACE>
-CUSTOMER_DB_PASSWORD=<REPLACE>
+PRODUCTS_DB_URL=<REPLACE>
+PRODUCTS_DB_USERNAME=<REPLACE>
+PRODUCTS_DB_PASSWORD=<REPLACE>
 EOF
 ```
 Replace the placeholder with the detail of the environment you are connecting to.
@@ -119,7 +119,7 @@ iam:
 
 1. Encrypt creds
 ```
-echo "CUSTOMER_DB_URL=XXXXX CUSTOMER_DB_USERNAME=XXXXX CUSTOMER_DB_PASSWORD=XXXXX" | bundle exec ssssh encrypt --no-wrap 89cb1887-4448-4ecb-870d-9e1105688fe2
+echo "PRODUCTS_DB_URL=XXXXX PRODUCTS_DB_USERNAME=XXXXX PRODUCTS_DB_PASSWORD=XXXXX" | bundle exec ssssh encrypt --no-wrap 89cb1887-4448-4ecb-870d-9e1105688fe2
 ```
 1. Encode cypher text
 ```
@@ -141,4 +141,4 @@ app:
 
 # Custodian
 
-products Team customergroupplatform@rea-group.com
+products Team productrgroupplatform@rea-group.com
