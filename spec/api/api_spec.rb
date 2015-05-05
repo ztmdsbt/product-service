@@ -133,7 +133,7 @@ describe ProductStore::API do
 
     describe 'PUT /products/:id' do
       # let(:content_type) { :CONTENT_TYPE, 'application/json' }
-      subject { put '/products/1', product: ParamFactory.build_product(id: 1), 'CONTENT_TYPE' => 'application/json' }
+      subject { put '/products/1', product: ParamFactory.build_product(id: 1) }
 
       context 'with valid params' do
         before do

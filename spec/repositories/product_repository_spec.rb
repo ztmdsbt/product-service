@@ -40,7 +40,7 @@ describe ProductRepository do
     context 'with existing product' do
       let(:product_attrs) { ModelFactory.create_product.attributes }
 
-      it 'should raise error and not save billing entity' do
+      it 'should raise error' do
         expect { subject }.to raise_error RecordInvalidError
       end
     end
@@ -49,6 +49,32 @@ describe ProductRepository do
       let(:product_attrs) { ModelFactory.build_product.attributes }
 
       it { expect(ProductRepository.find id).to be_a Product }
+    end
+  end
+
+  describe '#update' do
+    subject(:id) { ProductRepository.update product_attrs, product_id }
+
+    context 'should update the product, when product exists' do
+      let(:product) { ModelFactory.create_product }
+      let(:product_attrs) { ModelFactory.build_product(id: product.id, name: "abc", category: "xyz").attributes.except(:id) }
+      let(:product_id) { product.id }
+
+      it do
+        product = ProductRepository.find(id)
+        expect(product.name).to eql product_attrs[:name]
+        expect(product.category).to eql product_attrs[:category]
+      end
+    end
+
+    context 'with not existing product' do
+      let(:product) { ModelFactory.build_product }
+      let(:product_attrs) { product.attributes.except(:id) }
+      let(:product_id) { product.id }
+
+      it 'should raise error' do
+        expect { subject }.to raise_error RecordNotFoundError
+      end
     end
   end
 end

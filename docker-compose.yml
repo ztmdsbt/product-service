@@ -7,14 +7,13 @@ web:
     - devdb
     - testdb
   environment:
-    PRODUCTS_DB_URL: testdb
-    PRODUCTS_DB_USERNAME: products_test
+    PRODUCTS_DB_URL: devdb
+    PRODUCTS_DB_USERNAME: products_development
     PRODUCTS_DB_PASSWORD: thepassword
-    RACK_ENV: test
+    RACK_ENV: development
   ports:
     - "9292:80"
   command: bundle exec unicorn -c config/unicorn.rb -p 80
-
 devdb:
   image: postgres:9.4
   environment:

@@ -45,6 +45,11 @@ class Database
         result :one
         validator ProductCreationValidator
       end
+
+      define(:update) do
+        result :one
+        validator ProductCreationValidator
+      end
     end
   end
 

@@ -42,7 +42,7 @@ module ProductStore
         use :product
       end
       put ':id' do
-        present ProductRepository.find(ProductRepository.update(convert_param_keys(params[:product]))),
+        present ProductRepository.find(ProductRepository.update(convert_param_keys(params[:product]), params[:id])),
                 with: ProductRepresenter
       end
     end
