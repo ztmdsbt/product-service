@@ -5,9 +5,9 @@ module SharedParams
     requires :product, type: Hash do
       requires :category, type: String, allow_blank: false
       requires :name, type: String, allow_blank: false
-      requires :created_at, type: DateTime, allow_blank: false
-      optional :updated_at, type: DateTime, allow_blank: false
-      optional :expired_at, type: DateTime, allow_blank: false
+      requires :createdAt, type: DateTime, allow_blank: false
+      optional :updatedAt, type: DateTime, allow_blank: false
+      optional :expiredAt, type: DateTime, allow_blank: false
     end
   end
 

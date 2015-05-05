@@ -3,8 +3,8 @@ class ProductRepository
     Database.db.relation(:products).as(:products).to_a
   end
 
-  def self.find(_id)
-    product = Database.db.relation(:products).as(:products).first
+  def self.find(id)
+    product = Database.db.relation(:products).as(:products).find(id).first
     raise RecordNotFoundError, 'Product not found' unless product
     product
   end

@@ -2,6 +2,7 @@ module ProductStore
   class API < Grape::API
     content_type :json, 'application/hal+json'
     format :json
+    default_format :json
     formatter :json, Grape::Formatter::Roar
 
     helpers SharedParams
@@ -34,6 +35,14 @@ module ProductStore
       end
       post do
         present ProductRepository.find(ProductRepository.save(convert_param_keys(params[:product]))),
+                with: ProductRepresenter
+      end
+
+      params do
+        use :product
+      end
+      put ':id' do
+        present ProductRepository.find(ProductRepository.update(convert_param_keys(params[:product]))),
                 with: ProductRepresenter
       end
     end

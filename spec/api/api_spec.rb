@@ -123,11 +123,55 @@ describe ProductStore::API do
 
         before { subject }
 
-        context 'with missing product attribute' do
+        context 'with nil product attribute' do
           let(:params) { ParamFactory.build_product(name: nil) }
 
           it { expect(last_response.bad_request?).to be_truthy }
         end
+      end
+    end
+
+    describe 'PUT /products/:id' do
+      # let(:content_type) { :CONTENT_TYPE, 'application/json' }
+      subject { put '/products/1', product: ParamFactory.build_product(id: 1), 'CONTENT_TYPE' => 'application/json' }
+
+      context 'with valid params' do
+        before do
+          allow(ProductRepository).to receive(:update).and_return(1)
+          allow(ProductRepository).to receive(:find).with(1).and_return(Product.new(id: 1))
+          subject
+        end
+
+        it 'should update the product' do
+          expect(last_response.ok?).to be_truthy
+          expect(json_response[:id]).to eql 1
+        end
+      end
+
+      context 'with not existing product' do
+        before do
+          allow(ProductRepository).to receive(:update).and_raise(RecordNotFoundError)
+          subject
+        end
+
+        it { expect(last_response.not_found?).to be_truthy }
+      end
+
+      context 'product name and category same as another exists product' do
+        before do
+          allow(ProductRepository).to receive(:update).and_raise(RecordInvalidError)
+          subject
+        end
+
+        it { expect(last_response.unprocessable?).to be_truthy }
+      end
+
+      context 'with nil necessary attributes' do
+        subject { put '/products/1', product: ParamFactory.build_product(name: nil) }
+
+        before { subject }
+
+        it { expect(last_response.bad_request?).to be_truthy }
       end
     end
   end

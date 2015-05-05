@@ -1,0 +1,30 @@
+---
+web:
+  build: .
+  volumes:
+    - .:/products
+  links:
+    - devdb
+    - testdb
+  environment:
+    PRODUCTS_DB_URL: testdb
+    PRODUCTS_DB_USERNAME: products_test
+    PRODUCTS_DB_PASSWORD: thepassword
+    RACK_ENV: test
+  ports:
+    - "9292:80"
+  command: bundle exec unicorn -c config/unicorn.rb -p 80
+
+devdb:
+  image: postgres:9.4
+  environment:
+    POSTGRES_USER: products_development
+    POSTGRES_PASSWORD: thepassword
+  ports:
+    - "5432:5432"
+
+testdb:
+  image: postgres:9.4
+  environment:
+    POSTGRES_USER: products_test
+    POSTGRES_PASSWORD: thepassword

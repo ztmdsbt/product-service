@@ -1,0 +1,14 @@
+# /bin/bash
+
+set -e
+
+echo "Beginning KMS decryption"
+if [ ! -z "$KMS_SECRET_ENCODED" ]; then
+  echo "Found KMS_SECRET_ENCODED in environment"
+  KMS_SECRETS=$(echo "$KMS_SECRET_ENCODED" | base64 --decode)
+  eval $(ssssh decrypt "$KMS_SECRETS" | grep "^[^#]*=.*" | sed 's/^/export /')
+fi
+
+message=$(rake db:migrate)
+echo $message
+unicorn -c config/unicorn.rb -p 80

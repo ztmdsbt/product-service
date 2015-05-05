@@ -1,11 +1,11 @@
 class ParamFactory
   def self.build_product(overrides = {})
     {
-      category:   FFaker::Lorem.word,
-      name:       FFaker::Address.street_name,
-      created_at: FFaker::Time.date,
-      updated_at: FFaker::Time.date,
-      expired_at: FFaker::Time.date
+      category:  FFaker::Lorem.word,
+      name:      FFaker::Address.street_name,
+      createdAt: FFaker::Time.date,
+      updatedAt: FFaker::Time.date,
+      expiredAt: FFaker::Time.date
     }.merge(overrides)
   end
 end
