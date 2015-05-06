@@ -75,5 +75,33 @@ describe ProductStore::API do
         it { expect(last_response).to be_unprocessable }
       end
     end
+
+    describe 'PUT /products/:id' do
+      let(:product) { ModelFactory.create_product }
+
+      subject { put "/products/#{product.id}", product: params }
+
+      before { subject }
+
+      context 'should update the product' do
+        let(:params) { ParamFactory.build_product }
+
+        it { expect(last_response.ok?).to be_truthy }
+      end
+
+      context 'should raise RecordNotFoundError when product id not exits' do
+        let(:product) { ModelFactory.build_product(id: -1) }
+        let(:params) { ParamFactory.build_product }
+
+        it { expect(last_response.not_found?).to be_truthy }
+      end
+
+      context 'should raise RecordInvalidError when name and category same as existing product.' do
+        let(:existing_product) { ModelFactory.create_product(id: 2) }
+        let(:params) { ParamFactory.build_product(name: existing_product.name, category: existing_product.category) }
+
+        it { expect(last_response.unprocessable?).to be_truthy }
+      end
+    end
   end
 end

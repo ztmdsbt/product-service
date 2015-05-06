@@ -42,7 +42,8 @@ module ProductStore
         use :product
       end
       put ':id' do
-        present ProductRepository.find(ProductRepository.update(convert_param_keys(params[:product]), params[:id])),
+        product_attrs = convert_param_keys(params[:product].merge(id: params[:id]))
+        present ProductRepository.find(ProductRepository.update(product_attrs)),
                 with: ProductRepresenter
       end
     end
