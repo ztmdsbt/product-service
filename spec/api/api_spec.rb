@@ -10,21 +10,6 @@ describe ProductStore::API do
   describe ProductStore::API do
     let(:json_response) { JSON.parse(last_response.body, symbolize_names: true) }
 
-    describe 'GET /' do
-      before do
-        get('/')
-      end
-
-      it 'returns application/hal+json' do
-        expect(last_response.status).to eq(200)
-        expect(last_response.content_type).to eq 'application/hal+json'
-      end
-
-      it 'returns index' do
-        expect(json_response[:_links]).to eq({})
-      end
-    end
-
     describe 'GET /products' do
       subject { get '/products' }
 

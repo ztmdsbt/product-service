@@ -47,9 +47,5 @@ module ProductStore
                 with: ProductRepresenter
       end
     end
-
-    get '/' do
-      { '_links' => HAL::Index.links }
-    end
   end
 end
