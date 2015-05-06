@@ -1,6 +1,5 @@
-FROM the-money-docker-registry.test.corp.realestate.com.au/hydra/ubuntu-ruby2.1
-MAINTAINER Products <productgroupplatform@rea-group.com>
-
+#!/usr/bin/env bash
+from ruby
 RUN mkdir /app
 
 RUN apt-get update -y

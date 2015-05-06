@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-source 'http://rubygems.delivery.realestate.com.au/'
 
 gem 'rake'
 gem 'rack'
@@ -9,9 +8,11 @@ gem 'grape-roar'
 gem 'rom-sql'
 gem 'pg'
 gem 'unicorn'
-gem 'rea-health-check'
-gem 'rack-hal_browser'
-gem 'hal-index'
+gem 'newrelic-grape'
+
+group :production do
+  gem 'newrelic-grape'
+end
 
 group :test do
   gem 'rack-test'

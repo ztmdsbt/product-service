@@ -1,6 +1,5 @@
 GEM
   remote: https://rubygems.org/
-  remote: http://rubygems.delivery.realestate.com.au/
   specs:
     activesupport (4.2.1)
       i18n (~> 0.7)
@@ -44,7 +43,6 @@ GEM
     grape-roar (0.3.0)
       grape
       roar (>= 1.0)
-    hal-index (0.0.9)
     hashie (3.4.1)
     i18n (0.7.0)
     ice_nine (0.11.1)
@@ -64,8 +62,6 @@ GEM
     rack (1.6.0)
     rack-accept (0.4.5)
       rack (>= 0.4)
-    rack-hal_browser (0.3.24)
-      rack (>= 1.5.2)
     rack-mount (0.8.3)
       rack (>= 1.0.0)
     rack-test (0.6.3)
@@ -73,9 +69,6 @@ GEM
     rainbow (2.0.0)
     raindrops (0.13.0)
     rake (10.4.2)
-    rea-health-check (0.4.2)
-      json
-      rack
     representable (2.1.5)
       multi_json
       nokogiri
@@ -141,13 +134,11 @@ DEPENDENCIES
   ffaker
   grape
   grape-roar
-  hal-index
+  newrelic-grape
   pg
   rack
-  rack-hal_browser
   rack-test
   rake
-  rea-health-check
   roar
   rom-sql
   rspec

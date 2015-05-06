@@ -16,8 +16,6 @@ $LOAD_PATH.unshift File.expand_path('../app', File.dirname(__FILE__))
 $LOAD_PATH.unshift File.expand_path('../config', File.dirname(__FILE__))
 
 require 'logging'
-require 'rack/hal_browser'
-require 'hal/index'
 require 'roar/representer'
 require 'roar/json'
 require 'roar/json/hal'
