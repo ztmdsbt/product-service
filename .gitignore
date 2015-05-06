@@ -19,7 +19,7 @@
 zeus.json
 cdm.db
 
-.env
+#.env
 # Created by https://www.gitignore.io
 
 ### RubyMine ###
