@@ -13,10 +13,8 @@ class ProductRepository
     command.create.call(attrs.except(:id))[:id]
   end
 
-  def self.update(attrs, id)
-    # byebug
-    raise RecordNotFoundError unless find_product id
-    command.update.find(id).set(attrs)[:id]
+  def self.update(attrs)
+    command.update.find(attrs[:id]).set(attrs)[:id]
   end
 
   def self.command

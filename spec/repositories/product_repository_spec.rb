@@ -53,7 +53,7 @@ describe ProductRepository do
   end
 
   describe '#update' do
-    subject(:id) { ProductRepository.update product_attrs, product_id }
+    subject(:id) { ProductRepository.update product_attrs.merge(id: product_id) }
 
     context 'should update the product, when product exists' do
       let(:product) { ModelFactory.create_product }
