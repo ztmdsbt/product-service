@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-from twdevops/ruby:2.1
+from ruby:2.1
 RUN mkdir /app
 
 RUN apt-get update -y
